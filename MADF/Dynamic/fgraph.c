@@ -57,11 +57,11 @@ void fgraph(int G[n+1][n+1],int k,int p[n+1],int c[n+1][n+1])
     p[j] = d[p[j-1]];
   }
   printf("The cost is: %d",cost[1]);
-  printf("The path is: ");
+  printf("\nThe path is: ");
   int u=1;
   for(j = 1;j < k;j++)
   {
-    printf("p[%d] = %d \n",u,d[u]);
+    printf("%d ->",d[u]);
     u = d[u];
   }
 }
