@@ -45,7 +45,7 @@ void AllPaths(int n,int cost[n][n],int A[n][n])
    A[i][j] = cost[i][j];
   }
  }
- printf("Initial matrix: A[0] \n");
+ printf("\nInitial matrix: A[0] \n");
  for(int i = 0;i < n;i++)
  {
   for(int j = 0;j < n;j++)
@@ -66,7 +66,7 @@ void AllPaths(int n,int cost[n][n],int A[n][n])
     }
    }
   }
-  printf("Intermediate matrix: A[%d] \n" ,k+1);
+  printf("\nIntermediate matrix: A[%d] \n" ,k+1);
   for(int i = 0;i < n;i++)
   {
    for(int j = 0;j < n;j++)
@@ -76,7 +76,7 @@ void AllPaths(int n,int cost[n][n],int A[n][n])
    printf("\n");
   }
  }
- printf("All pair shortest path matrix:\n");
+ printf("\nAll pair shortest path matrix:\n");
  for(int i = 0;i < n;i++)
  {
   for(int j = 0;j < n;j++)
