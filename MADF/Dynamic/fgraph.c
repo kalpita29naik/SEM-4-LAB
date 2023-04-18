@@ -1,3 +1,4 @@
+//3a.Multiple stage graph with forward approach
 #include<stdio.h>
 #define inf 999
 int n;
@@ -20,7 +21,7 @@ int main()
     }
   }
 
-  printf("Enter the paths and cost:");
+  printf("Enter the paths and cost\n");
   for(int i = 0;i < v;i++)
   {
     scanf("%d%d%d",&o,&d,&cost);
@@ -37,7 +38,7 @@ void fgraph(int G[n+1][n+1],int k,int p[n+1],int c[n+1][n+1])
 {
   int cost[n+1],d[n+1],min,r,j;
   cost[n] = 0;
-  for(j = n-1;j >= 1;j--)
+  for(j = n - 1;j >= 1;j--)
   {
     min = inf;
     for(r = j + 1;r <= n;r++)
@@ -52,16 +53,18 @@ void fgraph(int G[n+1][n+1],int k,int p[n+1],int c[n+1][n+1])
   }
   p[1] = 1;
   p[k] = n;
-  for(j = 2;j <= k-1;j++)
+  for(j = 2;j <= k - 1;j++)
   {
-    p[j] = d[p[j-1]];
+    p[j] = d[p[j - 1]];
   }
   printf("The cost is: %d",cost[1]);
   printf("\nThe path is: ");
   int u=1;
-  for(j = 1;j < k;j++)
+  printf("%d -> ",u);
+  for(j = 1;j < k - 1;j++)
   {
-    printf("%d ->",d[u]);
+    printf("%d -> ",d[u]);
     u = d[u];
   }
+  printf("%d ",d[u]);
 }
