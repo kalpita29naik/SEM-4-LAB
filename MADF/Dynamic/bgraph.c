@@ -1,7 +1,10 @@
 #include<stdio.h>
 #define inf 999
-int n;
+int n,top = -1;
 void bgraph(int G[n+1][n+1],int k,int p[n+1],int c[n+1][n+1]);
+void path(int d[n+1],int n,int k);
+void push(int stack[],int n);
+int pop(int stack[]);
 
 int main()
 {
@@ -20,7 +23,7 @@ int main()
     }
   }
 
-  printf("Enter the paths and cost:");
+  printf("Enter the paths and cost\n");
   for(int i = 0;i < v;i++)
   {
     scanf("%d%d%d",&o,&d,&cost);
@@ -59,4 +62,32 @@ void bgraph(int G[n+1][n+1],int k,int p[n+1],int c[n+1][n+1])
     p[j] = d[p[j + 1]];
   }
   printf("The cost is: %d\n",bcost[n]);
+  printf("The path is: ");
+  path(d,n,k);
+}
+
+void path(int d[n+1],int n,int k)
+{
+  int stack[k+1],i;
+  push(stack,n);
+  for(int i = 0;i < k;i++)
+  {
+    push(stack,d[n]);
+    n = d[n];
+  }
+  for(i = top;i > 0;i--)
+  {
+    printf("%d -> ",pop(stack));
+  }
+  printf("%d ",pop(stack));
+}
+
+void push(int stack[],int n)
+{
+  stack[++top] = n;
+}
+
+int pop(int stack[])
+{
+  return stack[top--];
 }
