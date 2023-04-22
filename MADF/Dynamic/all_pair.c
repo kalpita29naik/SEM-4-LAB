@@ -1,5 +1,8 @@
+//3b.All pair shortest path 
 #include<stdio.h>
+
 void AllPaths(int n,int cost[n][n],int A[n][n]);
+void print(int n,int cost[n][n]); 
 
 int main(void)
 {
@@ -9,31 +12,28 @@ int main(void)
  printf("Enter the number of edges: ");
  scanf("%d",&e);
  int cost[n][n],A[n][n];
-for(int i = 0;i < n ;i++)
-{
- for(int j = 0;j < n;j++)
+ for(int i = 0;i < n ;i++)
  {
-  if(i == j)
+  for(int j = 0;j < n;j++)
   {
-   cost[i][j] = 0;
+   if(i == j)
+   {
+    cost[i][j] = 0;
+   }
+   else
+   {
+    cost[i][j] = 999;
+   }
   }
-  else
-  {
-   cost[i][j] = 999;
-  }
-  
  }
-}
-printf("Enter paths and cost:\n");
-for(int i = 0;i < e;i++)
-{
- scanf("%d %d %d",&o,&d,&c);
- cost[o-1][d-1] = c;
-}
-
+ printf("Enter paths and cost:\n");
+ for(int i = 0;i < e;i++)
+ {
+  scanf("%d %d %d",&o,&d,&c);
+  cost[o-1][d-1] = c;
+ }
  AllPaths(n,cost,A);
  return 0;
-
 }
 
 void AllPaths(int n,int cost[n][n],int A[n][n])
@@ -41,19 +41,10 @@ void AllPaths(int n,int cost[n][n],int A[n][n])
  for(int i = 0;i < n;i++)
  {
   for(int j = 0;j < n;j++)
-  {
-   A[i][j] = cost[i][j];
-  }
+  {  A[i][j] = cost[i][j]; }
  }
- printf("\nInitial matrix: A[0] \n");
- for(int i = 0;i < n;i++)
- {
-  for(int j = 0;j < n;j++)
-  {
-   printf("%d ",A[i][j]);
-  }
-  printf("\n");
- }
+ printf("\nA[0] = ");
+ print(n,A);
  for(int k = 0;k < n;k++)
  {
   for(int i = 0;i < n;i++)
@@ -66,24 +57,19 @@ void AllPaths(int n,int cost[n][n],int A[n][n])
     }
    }
   }
-  printf("\nIntermediate matrix: A[%d] \n" ,k+1);
-  for(int i = 0;i < n;i++)
-  {
-   for(int j = 0;j < n;j++)
-   {
-    printf("%d ",A[i][j]);
-   }
-   printf("\n");
-  }
+  printf("\nA[%d] = " ,k+1);
+ print(n,A);
  }
- printf("\nAll pair shortest path matrix:\n");
+}
+
+void print(int n,int cost[n][n])
+{
  for(int i = 0;i < n;i++)
  {
   for(int j = 0;j < n;j++)
   {
-   printf("%d ",A[i][j]);
+   printf("\t%d",cost[i][j]);
   }
   printf("\n");
  }
 }
-
