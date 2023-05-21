@@ -6,7 +6,6 @@ void Nqueen(int N,int k,int x[N+1]);
 int Place(int k,int i,int x[N]);
 void Print(int N,int x[N+1]);
 
-
 int main()
 {
  int k=1;
@@ -14,7 +13,6 @@ int main()
  scanf("%d",&N);
  int x[N+1];
  Nqueen(N,k,x);
-
 }
 
 void Nqueen(int N,int k,int x[N+1])
@@ -71,5 +69,5 @@ void Print(int N,int x[N+1])
   }
   printf("\n");
  }
- printf("\n------------------------------\n");
+ printf("\n------------------------------\n\n");
 }
